@@ -148,8 +148,11 @@ labels[["other"]] <- "other<br />streaming<br />services"
 ```
 and save a local copy for faster loading/just in case
 ```{r, eval = FALSE}
-for (r in 1:8) {
-  download.file(logos$logo[r], logos$path[r])
+if (!dir_ls("images/") %>% length()) {
+    for (r in 1:8) {
+        download.file(logos$logo[r], logos$path[r])
+    }
+    
 }
 ```
 I can leverage `{ggtext}` to set these as the axis labels
